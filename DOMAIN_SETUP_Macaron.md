@@ -187,8 +187,8 @@ handle /macaroon        { redir https://hellomacaron.com/ 302 }
 handle_path /macaroon/* { redir https://hellomacaron.com{uri} 302 }
 ```
 
-> 🔴 **block เดิมในไฟล์ยังมีปัญหานี้อยู่** — `/mini_osoth*`, `/osoth*`, `/ctrl*`, `/OSOTH_MINI*`,
-> `/RISR_BOOKING*` ใช้รูปแบบเดียวกัน ยังไม่ได้แก้เพราะเจ้าของสั่งห้ามแตะแอปอื่น **ควรแก้ทีหลัง**
+> 🔴 block `handle_path ... redir ...{uri}` อื่น ๆ ในไฟล์เดียวกันใช้รูปแบบเดิมอยู่
+> ยังไม่ได้แก้เพราะเจ้าของสั่งห้ามแตะแอปอื่น — **ควรตามแก้ให้ครบ** (ดูรายละเอียดใน internal note)
 
 ### 5.3 restore ตอน reload fail ด้วย ไม่ใช่แค่ตอน validate fail
 
@@ -257,8 +257,7 @@ docker ps --filter name=macaron-app --format '{{.Status}}'
 
 ## 9. หมายเหตุด้านความปลอดภัย
 
-- **มีการส่ง session cookie ของแผง registrar ผ่านแชตอีกครั้งในงานนี้** (`grent_com_cookies.json`)
-  → ควร **logout session เดิม** ให้เรียบร้อย
+- **มีการส่ง session cookie ของแผง registrar ผ่านแชตในงานนี้** → ควร **logout session เดิม**
 - ไฟล์ cookie ถูกเพิ่มใน `.gitignore` แล้ว (`grent_com_cookies.json`, `*_cookies.json`)
   และ `--exclude` ตอน rsync ขึ้นเซิร์ฟเวอร์ → ไม่หลุดขึ้น GitHub และไม่ขึ้น VPS
 - แผง registrar บัญชีนี้มีโดเมนอื่นอีกหลายสิบตัว — ทุก request ที่ยิงล็อกไว้เฉพาะ

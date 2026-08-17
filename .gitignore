@@ -43,3 +43,6 @@ next-env.d.ts
 # session cookies / credentials — never commit
 grent_com_cookies.json
 *_cookies.json
+
+# other projects internal runbook — not this repo, contains infra notes
+DOMAIN_SETUP_Osoth.md
