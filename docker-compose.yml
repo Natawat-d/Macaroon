@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+    image: macaron-app
+    container_name: macaron-app
+    restart: unless-stopped
+    # 3400 was free on the host; every other app there sits in the 3000–3320 range.
+    ports:
+      - "3400:3000"
+    environment:
+      NODE_ENV: production
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
