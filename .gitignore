@@ -44,5 +44,7 @@ next-env.d.ts
 grent_com_cookies.json
 *_cookies.json
 
-# other projects internal runbook — not this repo, contains infra notes
+# infrastructure runbooks — local only, never commit (repo is public)
 DOMAIN_SETUP_Osoth.md
+DOMAIN_SETUP_Macaron.md
+DOMAIN_SETUP_*.md
