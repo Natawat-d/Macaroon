@@ -67,13 +67,12 @@ export default function SiteFooter() {
               first box. No more than one email a week — we promise.
             </p>
           </div>
-          <form
-            className="flex flex-col gap-3 sm:flex-row"
-            action="/shop"
-            method="get"
-          >
+          {/* No action: submits to the current URL, which keeps it correct
+              under the /macaroon basePath without a client component. */}
+          <form className="flex flex-col gap-3 sm:flex-row">
             <input
               type="email"
+              name="email"
               required
               placeholder="your@email.com"
               aria-label="Email address"
