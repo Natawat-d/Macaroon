@@ -3,9 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Emits a self-contained server bundle so the Docker runtime stage stays small.
   output: "standalone",
-  // The app is fronted by Caddy at <host>/macaroon and owns that prefix itself
-  // (the proxy uses `handle`, not `handle_path`, so it forwards the path intact).
-  basePath: "/macaroon",
+  // Served at the root of hellomacaron.com — no basePath. The old
+  // <ip>/macaroon path is a 302 to this domain, handled in Caddy.
 };
 
 export default nextConfig;

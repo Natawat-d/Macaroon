@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# session cookies / credentials — never commit
+grent_com_cookies.json
+*_cookies.json

@@ -5,15 +5,15 @@ services:
     image: macaron-app
     container_name: macaron-app
     restart: unless-stopped
-    # Localhost-only: Caddy fronts this at <host>/macaroon, matching how the
-    # other path-routed apps on this box are published.
+    # Localhost-only: Caddy terminates TLS for hellomacaron.com and proxies
+    # here, matching how the other apps on this box are published.
     ports:
       - "127.0.0.1:3400:3000"
     environment:
       NODE_ENV: production
-    # Must hit the basePath — the app serves nothing at "/".
+    # App serves at the root now that basePath is gone.
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/macaroon"]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
       interval: 30s
       timeout: 5s
       retries: 3

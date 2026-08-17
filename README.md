@@ -2,7 +2,7 @@
 
 A drop-culture makeup storefront — the Casetify commerce pattern (marquee announcement bar, mega-menu, faceted collection grid with hover-swap cards, quick-add, personalisation studio, slide-out bag) rebuilt around a small-batch cosmetics brand.
 
-**Live:** http://147.50.254.104/macaroon
+**Live:** https://hellomacaron.com
 
 ## Stack
 
@@ -49,14 +49,20 @@ ssh -i ~/.ssh/akkra_deploy root@147.50.254.104 \
   'cd /opt/macaron && docker compose up -d --build'
 ```
 
-The container binds `127.0.0.1:3400` and carries a healthcheck. Caddy fronts it on ports 80/443:
+The container binds `127.0.0.1:3400`. Caddy fronts it on 80/443 and terminates TLS:
 
-```
-handle /macaroon* {
+```caddyfile
+hellomacaron.com, www.hellomacaron.com {
+	import mailcfg
 	reverse_proxy 127.0.0.1:3400
 }
 ```
 
-That block sits in both the `http://147.50.254.104` and `https://147.50.254.104` sites in `/etc/caddy/Caddyfile`. It uses `handle`, not `handle_path`, so the prefix is forwarded intact and the app owns it via `basePath: "/macaroon"` in `next.config.ts` — the two must stay in sync. Note the app serves **nothing** at `/`, so the healthcheck probes `/macaroon`.
+The legacy `147.50.254.104/macaroon` path 302s to the domain, anchored on a path separator so `/macaroon@evil.com` can't be smuggled into the redirect target:
 
-That Caddyfile is shared with ~8 other live sites. Back it up and run `caddy validate --config /etc/caddy/Caddyfile` before `systemctl reload caddy`.
+```caddyfile
+handle /macaroon        { redir https://hellomacaron.com/ 302 }
+handle_path /macaroon/* { redir https://hellomacaron.com{uri} 302 }
+```
+
+That Caddyfile is shared with ~8 other live sites. Back it up and run `caddy validate --config /etc/caddy/Caddyfile` before `systemctl reload caddy` — and restore on reload failure too, not just validate failure. See [DOMAIN_SETUP_Macaron.md](DOMAIN_SETUP_Macaron.md) for the full DNS + cutover record.
