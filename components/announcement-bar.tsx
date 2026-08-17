@@ -1,4 +1,4 @@
-import { MacaronMark } from "./product-art";
+import { MacaronGlyph } from "./logo";
 
 const MESSAGES = [
   "Free shipping on orders over $75",
@@ -21,7 +21,7 @@ export default function AnnouncementBar() {
             key={i}
             className="flex shrink-0 items-center gap-3 px-6 text-[11px] font-semibold tracking-[0.16em] uppercase"
           >
-            <MacaronMark className="h-3.5 w-auto" />
+            <MacaronGlyph className="h-4 w-4" />
             {m}
           </span>
         ))}

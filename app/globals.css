@@ -22,6 +22,7 @@
 
   --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-logo: var(--font-poppins), var(--font-outfit), ui-sans-serif, sans-serif;
 
   --animate-marquee: marquee 34s linear infinite;
   --animate-marquee-fast: marquee 18s linear infinite;
@@ -84,6 +85,21 @@ body {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+/* Wordmark: hairline geometric, always lowercase. Weight steps up a notch at
+   small sizes so the thin strokes don't disappear in the nav. */
+.logo-type {
+  font-family: var(--font-logo);
+  font-weight: 200;
+  letter-spacing: 0.012em;
+  text-transform: lowercase;
+}
+
+@media (max-width: 640px) {
+  .logo-type {
+    font-weight: 300;
+  }
 }
 
 /* Horizontal scrollers keep the rail feel without a visible scrollbar */

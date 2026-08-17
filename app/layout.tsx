@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart";
 import AnnouncementBar from "@/components/announcement-bar";
@@ -20,6 +20,14 @@ const inter = Inter({
   display: "swap",
 });
 
+// Logo only — geometric, single-storey "a", thin enough to match the wordmark.
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["200", "300"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Macaron — Colour cosmetics, baked in small batches",
@@ -37,7 +45,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${outfit.variable} ${inter.variable} ${poppins.variable}`}
+    >
       <body className="min-h-screen">
         <CartProvider>
           <AnnouncementBar />

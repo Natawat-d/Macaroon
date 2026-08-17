@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { CATEGORIES, PRODUCTS, money } from "@/lib/products";
 import { useCart } from "@/lib/cart";
-import ProductArt, { MacaronMark } from "./product-art";
+import ProductArt from "./product-art";
+import { Wordmark } from "./logo";
 
 const NAV = [
   { label: "Shop All", href: "/shop", mega: true },
@@ -62,8 +63,7 @@ export default function SiteHeader() {
         </button>
 
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <MacaronMark className="h-6 w-auto" />
-          <span className="display text-2xl">macaron</span>
+          <Wordmark className="text-[26px]" />
         </Link>
 
         <nav
@@ -274,7 +274,7 @@ export default function SiteHeader() {
           />
           <div className="relative h-full w-[86vw] max-w-sm animate-rise overflow-y-auto bg-cream p-6">
             <div className="flex items-center justify-between">
-              <span className="display text-2xl">macaron</span>
+              <Wordmark className="text-[26px]" />
               <button
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"

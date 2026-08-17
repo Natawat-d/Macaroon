@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MacaronMark } from "./product-art";
+import { Wordmark } from "./logo";
 
 const GROUPS = [
   {
@@ -92,8 +92,7 @@ export default function SiteFooter() {
       <div className="mx-auto grid max-w-[1400px] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
         <div>
           <div className="flex items-center gap-2">
-            <MacaronMark className="h-7 w-auto" />
-            <span className="display text-2xl">macaron</span>
+            <Wordmark className="text-3xl" />
           </div>
           <p className="mt-4 max-w-xs text-sm text-cream/60">
             Colour cosmetics baked in small batches. Refillable cases, talc-free

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCard from "@/components/product-card";
-import ProductArt, { MacaronMark } from "@/components/product-art";
+import ProductArt from "@/components/product-art";
+import { MacaronGlyph } from "@/components/logo";
 import { CATEGORIES, PRODUCTS, getProduct, money } from "@/lib/products";
 
 const STATS = [
@@ -55,7 +56,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1400px] items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-20">
           <div className="animate-rise">
             <span className="eyebrow inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[10px] text-cream">
-              <MacaronMark className="h-3 w-auto" />
+              <MacaronGlyph className="h-4 w-4" />
               New · Patisserie No. 1 palette
             </span>
             <h1 className="display mt-6 text-[3.25rem] leading-[0.92] sm:text-7xl lg:text-[5.5rem]">

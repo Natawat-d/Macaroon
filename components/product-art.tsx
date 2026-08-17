@@ -27,28 +27,6 @@ function tint(hex: string, amount: number) {
   return `rgb(${r} ${g} ${b})`;
 }
 
-/** The house motif: a macaron shell, used as logo mark and decoration. */
-export function MacaronMark({
-  className,
-  top = "#f7b9c8",
-  bottom = "#ef5f8e",
-  filling = "#fff3e6",
-}: {
-  className?: string;
-  top?: string;
-  bottom?: string;
-  filling?: string;
-}) {
-  return (
-    <svg viewBox="0 0 64 48" className={className} aria-hidden="true">
-      <path d="M4 20a28 16 0 0 1 56 0v2H4Z" fill={top} />
-      <path d="M4 28a28 16 0 0 0 56 0v-2H4Z" fill={bottom} />
-      <rect x="3" y="20.5" width="58" height="7" rx="3.5" fill={filling} />
-      <circle cx="18" cy="15" r="2" fill="#fff" opacity=".55" />
-    </svg>
-  );
-}
-
 export default function ProductArt({
   product,
   shadeIndex = 0,
